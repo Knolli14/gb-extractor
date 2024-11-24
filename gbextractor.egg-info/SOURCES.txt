@@ -1,0 +1,9 @@
+setup.py
+gbextractor/__init__.py
+gbextractor/main.py
+gbextractor/params.py
+gbextractor.egg-info/PKG-INFO
+gbextractor.egg-info/SOURCES.txt
+gbextractor.egg-info/dependency_links.txt
+gbextractor.egg-info/not-zip-safe
+gbextractor.egg-info/top_level.txt
