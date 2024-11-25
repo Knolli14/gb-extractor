@@ -3,6 +3,7 @@ import json
 
 from gbextractor.params import LOCAL_DATA_PATH
 
+
 def save_games_list(games_list):
     ''' Saves the extracetd games_list locally'''
 
@@ -24,6 +25,7 @@ def load_games_list():
 
     print("Loaded 'games_list.json' !")
     return data
+
 
 def save_pdf(content, title):
     ''' Save PDF of a boardgame'''
