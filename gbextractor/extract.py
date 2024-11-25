@@ -1,7 +1,7 @@
 import os
 import requests
 from bs4 import BeautifulSoup
-from gbextractor.data import load_games_list
+from gbextractor.data import load_games_list, save_pdf
 from gbextractor.params import LOCAL_DATA_PATH
 
 
@@ -64,11 +64,9 @@ def download_pdfs():
     games_list = load_games_list()
 
     for game in games_list["games"]:
-        response = requests.get(game["url"])
 
-        filename = os.path.join(LOCAL_DATA_PATH, "pdfs", game["title"]+".pdf")
-        with open(filename, "wb") as f:
-            f.write(response.content)
+        content = requests.get(game["url"]).content
+        save_pdf(content, game["title"])
 
     print("PDFs downloaded!")
 

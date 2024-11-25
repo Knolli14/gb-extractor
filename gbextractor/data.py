@@ -9,10 +9,11 @@ def save_games_list(games_list):
     games_dict = {"games": games_list}
     games_list_json = json.dumps(games_dict, indent=4)
 
-    with open(os.path.join(LOCAL_DATA_PATH, "games_list.json"), "w") as output:
+    save_path = os.path.join(LOCAL_DATA_PATH, "games_list.json")
+    with open(save_path, "w") as output:
         output.write(games_list_json)
 
-    print("File saved!")
+    print("Dict of all games saved locally:", save_path)
 
 
 def load_games_list():
@@ -24,6 +25,10 @@ def load_games_list():
     print("Loaded 'games_list.json' !")
     return data
 
-if __name__ == "__main__":
+def save_pdf(content, title):
+    ''' Save PDF of a boardgame'''
 
-    print(load_games_list())
+    filename = os.path.join(LOCAL_DATA_PATH, "pdfs", title+".pdf")
+
+    with open(filename, "wb") as f:
+        f.write(content)
