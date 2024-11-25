@@ -13,3 +13,17 @@ def save_games_list(games_list):
         output.write(games_list_json)
 
     print("File saved!")
+
+
+def load_games_list():
+    ''' Load the games_list dictionary '''
+
+    with open(os.path.join(LOCAL_DATA_PATH, "games_list.json"), 'r') as file:
+        data = json.load(file)
+
+    print("Loaded 'games_list.json' !")
+    return data
+
+if __name__ == "__main__":
+
+    print(load_games_list())

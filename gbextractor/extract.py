@@ -1,5 +1,8 @@
+import os
 import requests
 from bs4 import BeautifulSoup
+from gbextractor.data import load_games_list
+from gbextractor.params import LOCAL_DATA_PATH
 
 
 def get_soup(url, page=1):
@@ -40,6 +43,7 @@ def _extract_title(url):
 
     return " ".join(title_full.split("-")[1:-1])
 
+
 def get_games(url,  language="English"):
     ''' Extracts title and download url of all games'''
 
@@ -53,3 +57,21 @@ def get_games(url,  language="English"):
             games_list.append(extract_game(game_info))
 
     return games_list
+
+
+def download_pdfs():
+    ''' Download all the pdfs '''
+    games_list = load_games_list()
+
+    for game in games_list["games"]:
+        response = requests.get(game["url"])
+
+        filename = os.path.join(LOCAL_DATA_PATH, "pdfs", game["title"]+".pdf")
+        with open(filename, "wb") as f:
+            f.write(response.content)
+
+    print("PDFs downloaded!")
+
+if __name__ == "__main__":
+
+    download_pdfs()
