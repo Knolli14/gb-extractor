@@ -7,7 +7,7 @@ requirements =  [x.strip() for x in content if "git+" not in x]
 
 setup(
     name="gbextractor",
-    version="0.1",
+    version="1.0",
     description="Extract Manuals from specific Wegbpage",
     author="knolli",
     install_requirements=requirements,

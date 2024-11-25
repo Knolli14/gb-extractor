@@ -44,13 +44,14 @@ def _extract_title(url):
     return " ".join(title_full.split("-")[1:-1])
 
 
+# to be fixed: Change page range
 def get_games(url,  language="English"):
     ''' Extracts title and download url of all games'''
 
     games_list = []
 
-    for page in range(5): # substitute for dyn.solution
-        print("Extracting from page", page)
+    for page in range(1): # substitute for dyn.solution
+        print("Extracting from page", page+1)
         soup = get_soup(url, page)
 
         for game_info in get_games_info(soup, language=language):
@@ -69,7 +70,3 @@ def download_pdfs():
         save_pdf(content, game["title"])
 
     print("PDFs downloaded!")
-
-if __name__ == "__main__":
-
-    download_pdfs()

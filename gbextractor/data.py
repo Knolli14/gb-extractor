@@ -4,8 +4,9 @@ import json
 from gbextractor.params import LOCAL_DATA_PATH
 
 
+# to be fixed: json file should be overwritten. appends atm
 def save_games_list(games_list):
-    ''' Saves the extracetd games_list locally'''
+    ''' Saves the extracetd games_list locally as json file'''
 
     games_dict = {"games": games_list}
     games_list_json = json.dumps(games_dict, indent=4)
@@ -24,6 +25,7 @@ def load_games_list():
         data = json.load(file)
 
     print("Loaded 'games_list.json' !")
+    print("Number of games:", len(data["games"]))
     return data
 
 
@@ -34,3 +36,5 @@ def save_pdf(content, title):
 
     with open(filename, "wb") as f:
         f.write(content)
+
+    print("Downloaded", title, " rulebook!")
